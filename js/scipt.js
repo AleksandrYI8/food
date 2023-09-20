@@ -127,7 +127,7 @@ prev.onclick = () => {
     count = slideIndex + 1
 }
 
-console.log(count);
+
 
 
 let rasm = document.querySelectorAll(".tabcontent")
@@ -147,16 +147,102 @@ function change(a = 0) {
         menu[a].classList.remove("hide")
     })
 }
+
+let behinde = 0 
+
 knopki.forEach((knp, a) =>{
    
-    knp.classList.remove('tabheader__item_active')
+    
    
     knp.onclick = () => {
-        change(a) 
-        knp.classList.remove('tabheader__item_active')
+       
+        knopki[behinde].classList.remove('tabheader__item_active')
 
         knp.classList.add('tabheader__item_active')
+
+        behinde = a
+        
     }
 } )
 
-yunus()
+change()
+
+
+let wale = document.querySelectorAll('#gender .calculating__choose-item')
+
+let prevve = 0
+
+wale.forEach((btn, index) => {
+    
+
+    btn.onclick = () =>{
+        wale[prevve].classList.remove('calculating__choose-item_active')
+        btn.classList.add('calculating__choose-item_active')
+
+        prevve = index
+    }
+
+})
+
+let walee = document.querySelectorAll('#activity .calculating__choose-item')
+
+let prevvee = 0
+
+walee.forEach((btn, index) => {
+    
+
+
+
+    btn.onclick = () =>{
+        walee[prevvee].classList.remove('calculating__choose-item_active')
+        btn.classList.add('calculating__choose-item_active')
+
+        prevvee = index
+    }
+
+})
+
+let seconds = document.querySelector('#seconds') 
+let sec_num  = parseInt(seconds.textContent)
+let sec = sec_num
+
+let minutes = document.querySelector('#minutes')
+let min_num  = parseInt(minutes.textContent)
+let min = min_num
+
+let hours = document.querySelector('#hours')
+let hour_num  = parseInt(hours.textContent)
+let hour = hour_num
+
+let days = document.querySelector('#days')
+let day_num  = parseInt(days.textContent)
+let day = day_num
+
+
+setInterval(() =>{
+sec --- 1
+seconds.textContent = sec 
+minutes.textContent = min
+hours.textContent = hour
+days.textContent = day
+
+
+if(seconds.textContent === "0"){
+    sec = 60
+    min --- 1
+}else if(minutes.textContent === "0"){
+    min = 60
+    hour --- 1
+}else if(hours.textContent === "0"){
+    hour = 24
+    day --- 1 
+}else if(days.textContent === "-1"){
+day = 0
+min = 0
+sec = 0
+hour = 0
+}
+}, 1000)
+
+
+
