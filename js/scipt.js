@@ -23,8 +23,9 @@ let form = document.forms
 
 
 let patterns = {
-    name: /^[a-z ,.'-]+$/i,
-    phone: /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/g,
+    phone: /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/i,
+    name: /^[a-z ,.'-]+$/i
+    
 }
 
 
@@ -32,9 +33,9 @@ inps.forEach(inp => {
     inp.onkeyup = () => {
         console.log(patterns[inp.name].test(inp.value));
         if (patterns[inp.name].test(inp.value)) {
-            inp.parentElement.classList.remove('error-field')
+            inp.classList.remove('error-field')
         } else {
-            inp.parentElement.classList.add('error-field')
+            inp.classList.add('error-field')
         }
     }
 })
@@ -130,12 +131,16 @@ prev.onclick = () => {
 
 
 
+
+
+
+
 let rasm = document.querySelectorAll(".tabcontent")
 let knopki = document.querySelectorAll(".tabheader__item")
 let menu = document.querySelectorAll(".tabcontent__descr")
 
 
-function change(a = 0) {
+function yunus(a = 0) {
 
     rasm.forEach(img2 => {
           img2.classList.add("hide" , "fade")
@@ -148,24 +153,36 @@ function change(a = 0) {
     })
 }
 
-let behinde = 0 
+
 
 knopki.forEach((knp, a) =>{
-   
+
     
-   
+    
     knp.onclick = () => {
-       
-        knopki[behinde].classList.remove('tabheader__item_active')
+        yunus(a) 
 
+        knopki.forEach(i => {
+            i.classList.remove("tabheader__item_active")
+        
+        })
+        
         knp.classList.add('tabheader__item_active')
+        
 
-        behinde = a
         
     }
 } )
 
-change()
+yunus()
+
+
+
+
+
+
+
+
 
 
 let wale = document.querySelectorAll('#gender .calculating__choose-item')
@@ -236,6 +253,8 @@ if(seconds.textContent === "0"){
 }else if(hours.textContent === "0"){
     hour = 24
     day --- 1 
+    
+
 }else if(days.textContent === "-1"){
 day = 0
 min = 0
@@ -245,4 +264,18 @@ hour = 0
 }, 1000)
 
 
+let modall = document.querySelector('.modal')
+let buttonn = document.querySelector('.offer__action')
+let closee = document.querySelector('.modal__close')
 
+buttonn.onclick = ()=>{
+    modall.classList.remove("hide")
+    modall.classList.add('show')
+    modall.classList.add('fade')
+}
+
+closee.onclick = () =>{
+    modall.classList.remove("show")
+    modall.classList.add("hide")
+    
+}
